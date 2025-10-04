@@ -42,18 +42,44 @@ const OrderTracker = () => {
   const fetchOrder = async () => {
     try {
       setError('');
-      console.log('Fetching order with ID:', id);
-      console.log('API Base URL:', apiConfig.endpoints.orders);
-      
-      // Use makeAuthenticatedRequest which handles authentication headers
-      const data = await makeAuthenticatedRequest(`${apiConfig.endpoints.orders}/${id}`);
-      
-      console.log('Order data received:', data);
-      
-      // If we get here, the request was successful
-      const ord = data?.order || data;
-      console.log('Setting order data:', ord);
-      setOrder(ord);
+      const base = apiConfig.baseURL;
+      const token = JSON.parse(localStorage.getItem('fd_auth') || '{}')?.token;
+
+      // If authenticated, try the richer orders endpoint first
+      if (token) {
+        try {
+          const data = await makeAuthenticatedRequest(`${apiConfig.endpoints.orders}/${id}`);
+          const ord = data?.order || data;
+          setOrder(ord);
+          return;
+        } catch (_) {
+          // fall back to public endpoint below
+        }
+      }
+
+      // Public tracking endpoint (no auth required)
+      const res = await fetch(`${base}/api/tracking/order/${id}`, {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (!res.ok) {
+        const txt = await res.text().catch(() => '');
+        throw new Error(txt || `Failed to load order (${res.status})`);
+      }
+      const data = await res.json();
+      const ord = data?.order || {};
+      // Normalize minimal tracking response to expected shape
+      setOrder({
+        _id: ord.id || ord._id || id,
+        orderId: ord.orderId || id,
+        orderStatus: ord.status || ord.orderStatus,
+        items: ord.items || [],
+        total: ord.finalAmount || ord.totalAmount || ord.total,
+        restaurant: data.restaurant || null,
+        delivery: data.driver || null,
+        deliveryAddress: ord.deliveryAddress || data.deliveryAddress,
+        restaurantLatLng: ord.restaurantLatLng,
+        deliveryLatLng: ord.deliveryLatLng,
+      });
     } catch (e) {
       setError(e.message || 'Failed to load order');
     } finally {
