@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './FavouriteButton.css';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+
 const FavouriteButton = ({ foodItem, userId }) => {
   const [isFavourite, setIsFavourite] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,7 +33,7 @@ const FavouriteButton = ({ foodItem, userId }) => {
         return;
       }
 
-      const response = await fetch(`http://localhost:4000/api/favorites/check/${foodItem.id}`, {
+      const response = await fetch(`${API_BASE}/api/favorites/check/${foodItem.id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +86,7 @@ const FavouriteButton = ({ foodItem, userId }) => {
         return;
       }
 
-      const response = await fetch('http://localhost:4000/api/favorites/toggle', {
+      const response = await fetch(`${API_BASE}/api/favorites/toggle`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

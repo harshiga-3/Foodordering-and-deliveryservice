@@ -1,7 +1,6 @@
 // src/utils/api.js
-import { useAuth } from '../context/AuthContext';
-
-const API_BASE_URL = 'http://localhost:4000/api';
+const API_BASE_ROOT = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+const API_BASE_URL = `${API_BASE_ROOT}/api`;
 
 // Helper function to get auth token
 const getAuthToken = () => {
