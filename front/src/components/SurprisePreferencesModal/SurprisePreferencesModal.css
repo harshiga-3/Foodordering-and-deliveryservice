@@ -1,0 +1,312 @@
+/* Surprise Preferences Modal Styles */
+.surprise-preferences-modal .modal-content {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.surprise-preferences-modal .modal-header {
+  background: linear-gradient(135deg, #dc3545, #c82333) !important;
+  border: none;
+  padding: 1.5rem;
+}
+
+.surprise-preferences-modal .modal-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.surprise-preferences-modal .modal-body {
+  padding: 2rem;
+}
+
+.surprise-preferences-modal .modal-footer {
+  border: none;
+  padding: 1.5rem;
+  background: #f8f9fa;
+}
+
+/* Budget Slider Styles */
+.budget-slider-container {
+  padding: 1rem 0;
+}
+
+.budget-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #e9ecef 0%, #dc3545 100%);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.budget-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+}
+
+.budget-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+.budget-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+}
+
+.budget-slider::-moz-range-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+}
+
+/* Card Styles */
+.surprise-preferences-modal .card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.surprise-preferences-modal .card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.surprise-preferences-modal .card-header {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+  border: none;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1rem 1.5rem;
+}
+
+.surprise-preferences-modal .card-header h6 {
+  color: #495057;
+  font-weight: 600;
+  margin: 0;
+}
+
+.surprise-preferences-modal .card-body {
+  padding: 1.5rem;
+}
+
+/* Dietary Options */
+.dietary-option {
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dietary-option:hover {
+  background: rgba(220, 53, 69, 0.05);
+}
+
+.dietary-option .form-check-input:checked {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.dietary-option .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.dietary-option .form-check-label {
+  cursor: pointer;
+  font-weight: 500;
+  color: #495057;
+}
+
+/* Badge Styles */
+.badge.fs-6 {
+  font-size: 0.8rem !important;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Button Styles */
+.surprise-preferences-modal .btn {
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.surprise-preferences-modal .btn-primary {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  border: none;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.surprise-preferences-modal .btn-primary:hover {
+  background: linear-gradient(135deg, #c82333, #a71e2a);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.surprise-preferences-modal .btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.surprise-preferences-modal .btn-outline-secondary:hover {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+/* Icon Styles */
+.surprise-preferences-modal .bi {
+  font-size: 1.1em;
+}
+
+/* Text Styles */
+.surprise-preferences-modal h5 {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+.surprise-preferences-modal .text-muted {
+  color: #6c757d !important;
+}
+
+/* Location Status */
+.text-success {
+  color: #28a745 !important;
+  font-weight: 500;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .surprise-preferences-modal .modal-body {
+    padding: 1.5rem;
+  }
+  
+  .surprise-preferences-modal .card-body {
+    padding: 1rem;
+  }
+  
+  .budget-slider-container {
+    padding: 0.5rem 0;
+  }
+  
+  .dietary-option {
+    padding: 0.5rem;
+  }
+  
+  .surprise-preferences-modal .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .surprise-preferences-modal .modal-body {
+    padding: 1rem;
+  }
+  
+  .surprise-preferences-modal .card-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .surprise-preferences-modal .card-body {
+    padding: 0.75rem;
+  }
+  
+  .budget-slider {
+    height: 6px;
+  }
+  
+  .budget-slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .budget-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Animation for modal appearance */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.surprise-preferences-modal .modal-content {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Card hover animations */
+@keyframes cardHover {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}
+
+.surprise-preferences-modal .card:hover {
+  animation: cardHover 0.3s ease-out forwards;
+}
+
+/* Slider value indicator */
+.budget-slider-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #dc3545, #c82333);
+  transform: translateY(-50%);
+  z-index: -1;
+  border-radius: 1px;
+}
+
+/* Custom scrollbar for modal if needed */
+.surprise-preferences-modal .modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.surprise-preferences-modal .modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.surprise-preferences-modal .modal-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.surprise-preferences-modal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

@@ -1,0 +1,298 @@
+.driver-dashboard-container {
+  min-height: 100vh;
+  background: transparent;
+  padding: 2rem 0;
+}
+
+.driver-dashboard-container .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.driver-dashboard-container .card-header {
+  border-radius: 15px 15px 0 0 !important;
+  border: none;
+  padding: 1.5rem;
+}
+
+.driver-dashboard-container .card-body {
+  padding: 1.5rem;
+}
+
+/* Table Styles */
+.driver-dashboard-container .table {
+  margin-bottom: 0;
+}
+
+.driver-dashboard-container .table th {
+  border-top: none;
+  font-weight: 600;
+  color: #495057;
+  background: #f8f9fa;
+}
+
+.driver-dashboard-container .table td {
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+
+.driver-dashboard-container .table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Button Styles */
+.driver-dashboard-container .btn {
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.driver-dashboard-container .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.driver-dashboard-container .btn:active {
+  transform: translateY(0);
+}
+
+.driver-dashboard-container .btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+}
+
+.driver-dashboard-container .btn-success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  border: none;
+}
+
+.driver-dashboard-container .btn-outline-primary {
+  border: 2px solid #007bff;
+  color: #007bff;
+}
+
+.driver-dashboard-container .btn-outline-primary:hover {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.driver-dashboard-container .btn-outline-success {
+  border: 2px solid #28a745;
+  color: #28a745;
+}
+
+.driver-dashboard-container .btn-outline-success:hover {
+  background: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.driver-dashboard-container .btn-outline-info {
+  border: 2px solid #17a2b8;
+  color: #17a2b8;
+}
+
+.driver-dashboard-container .btn-outline-info:hover {
+  background: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+}
+
+.driver-dashboard-container .btn-outline-light {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.driver-dashboard-container .btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: white;
+}
+
+/* Badge Styles */
+.driver-dashboard-container .badge {
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Alert Styles */
+.driver-dashboard-container .alert {
+  border-radius: 15px;
+  border: none;
+  font-weight: 500;
+}
+
+.driver-dashboard-container .alert-danger {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+}
+
+/* Spinner Styles */
+.driver-dashboard-container .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+}
+
+/* Icon Styles */
+.driver-dashboard-container .fas {
+  margin-right: 0.5rem;
+}
+
+/* Card Hover Effects */
+.driver-dashboard-container .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.driver-dashboard-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Empty State */
+.driver-dashboard-container .fa-clipboard-list {
+  color: #6c757d;
+  opacity: 0.5;
+}
+
+/* Quick Actions */
+.driver-dashboard-container .quick-actions .btn {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .driver-dashboard-container {
+    padding: 1rem 0;
+  }
+  
+  .driver-dashboard-container .card {
+    margin-bottom: 1rem;
+  }
+  
+  .driver-dashboard-container .table {
+    font-size: 0.9rem;
+  }
+  
+  .driver-dashboard-container .table th,
+  .driver-dashboard-container .table td {
+    padding: 0.5rem;
+  }
+  
+  .driver-dashboard-container .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .driver-dashboard-container .quick-actions .btn {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .driver-dashboard-container .card-header,
+  .driver-dashboard-container .card-body {
+    padding: 1rem;
+  }
+  
+  .driver-dashboard-container .table {
+    font-size: 0.8rem;
+  }
+  
+  .driver-dashboard-container .table th,
+  .driver-dashboard-container .table td {
+    padding: 0.25rem;
+  }
+  
+  .driver-dashboard-container .btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .driver-dashboard-container .badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Text Styles */
+.driver-dashboard-container p {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.driver-dashboard-container h4,
+.driver-dashboard-container h5,
+.driver-dashboard-container h6 {
+  font-weight: 600;
+  color: #495057;
+}
+
+/* Status Colors */
+.status-pending { color: #ffc107; }
+.status-confirmed { color: #007bff; }
+.status-preparing { color: #17a2b8; }
+.status-out_for_delivery { color: #28a745; }
+.status-delivered { color: #28a745; }
+.status-cancelled { color: #dc3545; }
+
+/* Animation for table rows */
+.driver-dashboard-container .table tbody tr {
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for multiple rows */
+.driver-dashboard-container .table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.driver-dashboard-container .table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.driver-dashboard-container .table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.driver-dashboard-container .table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.driver-dashboard-container .table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+/* Loading state */
+.driver-dashboard-container .spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Online/Offline status indicator */
+.driver-dashboard-container .fa-circle {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

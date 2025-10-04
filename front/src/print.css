@@ -1,0 +1,80 @@
+/* Global print styles */
+
+/* Default: hide print-only blocks outside print */
+.print-only { display: none !important; }
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  /* General reset for print clarity */
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Layout: use full width */
+  .container, .container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 0 !important;
+  }
+
+  /* Hide navigation, sidebars, footers, dropdowns, and interactive UI */
+  .admin-sidebar,
+  .navbar,
+  .dropdown,
+  .dropdown-menu,
+  .footer,
+  .site-footer,
+  .site-header,
+  .header,
+  .pagination,
+  .toast,
+  .modal,
+  .offcanvas {
+    display: none !important;
+  }
+
+  /* Hide all buttons and form controls in print */
+  .btn,
+  button,
+  input,
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .input-group,
+  .alert .btn-close,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Cards and tables: make printable */
+  .card { box-shadow: none !important; border: 1px solid #000 !important; }
+  .card-header, .card-footer { background: #fff !important; border: 0 !important; }
+
+  .table { border: 1px solid #000 !important; }
+  .table th, .table td { border-top: 1px solid #000 !important; color: #000 !important; }
+
+  /* Badges and labels become simple text */
+  .badge { border: 1px solid #000 !important; background: #fff !important; color: #000 !important; }
+
+  /* Images scale to fit */
+  img { max-width: 100% !important; height: auto !important; }
+
+  /* Links: don't append URLs */
+  a[href]:after { content: '' !important; }
+
+  /* Show print-only blocks */
+  .print-only { display: block !important; }
+}

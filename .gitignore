@@ -1,0 +1,30 @@
+# Dependencies
+**/node_modules/
+
+# Build outputs
+**/dist/
+**/build/
+**/.cache/
+**/coverage/
+.vercel/
+.netlify/
+.next/
+out/
+
+# Environment files
+.env
+.env.*
+*.env
+server/.env
+front/.env
+
+# Logs
+*.log
+*.log.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local uploads (served by server/src/index.js from repo root uploads/)
+uploads/

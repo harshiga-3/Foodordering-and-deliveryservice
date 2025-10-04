@@ -1,0 +1,399 @@
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { apiConfig, makeAuthenticatedRequest } from '../../utils/apiConfig';
+// import RazorpayPayment from '../RazorpayPayment'; // Payment integration disabled
+// import { generateOrderId } from '../../utils/paymentUtils';
+import './Checkout.css';
+import StripeCheckout from '../Payment/StripeCheckout';
+
+const Checkout = ({ cart, onOrderSuccess, onClose, user }) => {
+  const [userDetails, setUserDetails] = useState({
+    name: user?.name || '',
+    address: '',
+    contactNumber: user?.phone || '',
+    email: user?.email || ''
+  });
+  const [deliveryAddress, setDeliveryAddress] = useState({
+    street: '',
+    city: '',
+    state: '',
+    pincode: '',
+    landmark: ''
+  });
+  const [specialInstructions, setSpecialInstructions] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [showPayment, setShowPayment] = useState(false);
+  const [orderData, setOrderData] = useState(null);
+  const [createdOrderId, setCreatedOrderId] = useState(null);
+
+  // Price utility to support number or formatted string (e.g., "₹1,234")
+  const getPriceNumber = (value) => {
+    if (typeof value === 'number') return value;
+    if (value == null) return 0;
+    const str = String(value).trim();
+    const cleaned = str.replace(/₹/g, '').replace(/,/g, '');
+    const num = parseFloat(cleaned);
+    return Number.isFinite(num) ? num : 0;
+  };
+
+  const formatPrice = (num) => `₹${Number(num || 0).toFixed(2)}`;
+
+  // Calculate totals
+  const safeCart = Array.isArray(cart) ? cart : [];
+  const subtotal = safeCart.reduce((sum, item) => {
+    const price = getPriceNumber(item.price);
+    const qty = Number.isFinite(item?.quantity) ? item.quantity : 1;
+    return sum + (price * qty);
+  }, 0);
+  
+  const deliveryCharge = subtotal > 500 ? 0 : 50; // Free delivery above ₹500
+  const gst = subtotal * 0.05; // 5% GST
+  const total = subtotal + deliveryCharge + gst;
+
+  const handleInputChange = (field, value) => {
+    setUserDetails(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleAddressChange = (field, value) => {
+    setDeliveryAddress(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handlePlaceOrder = async () => {
+    // Validate required fields
+    if (!userDetails.name || !userDetails.address || !userDetails.contactNumber) {
+      setError('Please fill in all required fields (Name, Address, Contact Number)');
+      return;
+    }
+
+    if (!deliveryAddress.street || !deliveryAddress.city || !deliveryAddress.pincode) {
+      setError('Please fill in delivery address details (Street, City, Pincode)');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+
+    try {
+      // Create order
+      // Infer restaurantId from cart if available (ensures auto-assignment works even for static items)
+      const inferredRestaurantId = (() => {
+        for (const it of safeCart) {
+          const rid = it?.restaurantId;
+          if (rid && /^[a-f\d]{24}$/i.test(String(rid))) return String(rid);
+        }
+        return undefined;
+      })();
+      const orderPayload = {
+        items: safeCart.map(item => {
+          const qty = Number.isFinite(item?.quantity) ? item.quantity : 1;
+          const priceNum = getPriceNumber(item.price);
+          return {
+            foodId: item._id || item.id || item.foodId || String(Math.random()),
+            name: item.name || item.title || 'Item',
+            price: priceNum.toString(),
+            quantity: qty,
+            image: item.image || item.img || '',
+            category: item.category || item.type || '',
+            isVeg: Boolean(item.isVeg)
+          };
+        }),
+        userDetails,
+        deliveryAddress,
+        specialInstructions,
+        paymentMethod: 'stripe',
+        ...(inferredRestaurantId ? { restaurantId: inferredRestaurantId } : {})
+      };
+
+      const orderResult = await makeAuthenticatedRequest(`${apiConfig.endpoints.orders}/create`, {
+        method: 'POST',
+        body: JSON.stringify(orderPayload)
+      });
+      setOrderData(orderResult.order);
+      setCreatedOrderId(orderResult.order.orderId);
+      setLoading(false);
+
+      try {
+        window.dispatchEvent(new CustomEvent('orders:changed', { detail: { orderId: orderResult.order.orderId } }));
+      } catch {}
+
+      // Proceed to Stripe payment step
+      setShowPayment(true);
+
+    } catch (error) {
+      console.error('Error creating order:', error);
+      setError(error.message || 'Failed to create order');
+      setLoading(false);
+    }
+  };
+  // Payment integration handlers removed
+
+  const handleStripeCompleted = (paymentId) => {
+    if (typeof onOrderSuccess === 'function' && createdOrderId) {
+      onOrderSuccess(createdOrderId, paymentId || 'stripe');
+    }
+  };
+
+  return (
+    <Container className="checkout-container py-4">
+      <Row>
+        <Col lg={8}>
+          <Card className="checkout-form-card">
+            <Card.Header>
+              <h4 className="mb-0">Checkout Details</h4>
+            </Card.Header>
+            <Card.Body>
+              {error && (
+                <Alert variant="danger" dismissible onClose={() => setError('')}>
+                  {error}
+                </Alert>
+              )}
+
+              <Form>
+                <h5 className="mb-3">Personal Information</h5>
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Full Name *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={userDetails.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
+                        placeholder="Enter your full name"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Contact Number *</Form.Label>
+                      <Form.Control
+                        type="tel"
+                        value={userDetails.contactNumber}
+                        onChange={(e) => handleInputChange('contactNumber', e.target.value)}
+                        placeholder="Enter contact number"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        value={userDetails.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        placeholder="Enter email address"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Address *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={userDetails.address}
+                        onChange={(e) => handleInputChange('address', e.target.value)}
+                        placeholder="Enter your address"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <h5 className="mb-3 mt-4">Delivery Address</h5>
+                <Row>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Street *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={deliveryAddress.street}
+                        onChange={(e) => handleAddressChange('street', e.target.value)}
+                        placeholder="Street address"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>City *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={deliveryAddress.city}
+                        onChange={(e) => handleAddressChange('city', e.target.value)}
+                        placeholder="City"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={4}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>State</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={deliveryAddress.state}
+                        onChange={(e) => handleAddressChange('state', e.target.value)}
+                        placeholder="State"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={4}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Pincode *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={deliveryAddress.pincode}
+                        onChange={(e) => handleAddressChange('pincode', e.target.value)}
+                        placeholder="Pincode"
+                        required
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={4}>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Landmark</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={deliveryAddress.landmark}
+                        onChange={(e) => handleAddressChange('landmark', e.target.value)}
+                        placeholder="Nearby landmark"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Form.Group className="mb-4">
+                  <Form.Label>Special Instructions</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={specialInstructions}
+                    onChange={(e) => setSpecialInstructions(e.target.value)}
+                    placeholder="Any special delivery instructions..."
+                  />
+                </Form.Group>
+
+                <div className="d-flex gap-3">
+                  <Button
+                    variant="outline-secondary"
+                    onClick={onClose}
+                    className="flex-fill"
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant="success"
+                    onClick={handlePlaceOrder}
+                    disabled={loading}
+                    className="flex-fill"
+                  >
+                    {loading ? (
+                      <>
+                        <Spinner animation="border" size="sm" className="me-2" />
+                        Processing...
+                      </>
+                    ) : (
+                      <>
+                        <i className="bi bi-bag-check me-2"></i>
+                        Place Order
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </Form>
+            </Card.Body>
+          </Card>
+
+          {showPayment && createdOrderId && (
+            <Card className="mt-3">
+              <Card.Header>
+                <h5 className="mb-0">Secure Payment</h5>
+              </Card.Header>
+              <Card.Body>
+                <StripeCheckout
+                  orderId={createdOrderId}
+                  amount={total}
+                  onCompleted={handleStripeCompleted}
+                  onCancel={() => setShowPayment(false)}
+                />
+              </Card.Body>
+            </Card>
+          )}
+        </Col>
+
+        <Col lg={4}>
+          <Card className="order-summary-card">
+            <Card.Header>
+              <h5 className="mb-0">Order Summary</h5>
+            </Card.Header>
+            <Card.Body>
+              <div className="order-items mb-3">
+                {safeCart.map((item, index) => (
+                  <div key={index} className="order-item d-flex justify-content-between align-items-center mb-2">
+                    <div className="item-details">
+                      <span className="item-name">{item.name}</span>
+                      <small className="text-muted d-block">
+                        Qty: {(Number.isFinite(item?.quantity) ? item.quantity : 1)} × {formatPrice(getPriceNumber(item.price))}
+                      </small>
+                    </div>
+                    <span className="item-total">
+                      {formatPrice((Number.isFinite(item?.quantity) ? item.quantity : 1) * getPriceNumber(item.price))}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <hr />
+
+              <div className="order-totals">
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Subtotal:</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Delivery Charge:</span>
+                  <span className={deliveryCharge === 0 ? 'text-success' : ''}>
+                    {deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge.toFixed(2)}`}
+                  </span>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>GST (5%):</span>
+                  <span>₹{gst.toFixed(2)}</span>
+                </div>
+                <hr />
+                <div className="d-flex justify-content-between fw-bold fs-5">
+                  <span>Total:</span>
+                  <span className="text-success">₹{total.toFixed(2)}</span>
+                </div>
+              </div>
+
+              {subtotal < 500 && (
+                <div className="delivery-info mt-3">
+                  <small className="text-muted">
+                    <i className="bi bi-info-circle me-1"></i>
+                    Add ₹{(500 - subtotal).toFixed(2)} more for FREE delivery!
+                  </small>
+                </div>
+              )}
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default Checkout;

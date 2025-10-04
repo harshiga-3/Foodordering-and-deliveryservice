@@ -1,0 +1,212 @@
+.driver-tracking-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 0;
+}
+
+.driver-tracking-container .card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.driver-tracking-container .card-header {
+  border-radius: 15px 15px 0 0 !important;
+  border: none;
+  padding: 1.5rem;
+}
+
+.driver-tracking-container .card-body {
+  padding: 1.5rem;
+}
+
+.order-details {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.order-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.location-controls {
+  text-align: center;
+}
+
+.location-info {
+  background: #e3f2fd;
+  border-radius: 8px;
+  padding: 1rem;
+  border-left: 4px solid #2196f3;
+}
+
+.location-info p {
+  margin-bottom: 0.25rem;
+}
+
+.auto-update-controls {
+  background: #f3e5f5;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border: 1px solid #e1bee7;
+}
+
+.auto-update-controls h6 {
+  color: #7b1fa2;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.status-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.status-buttons .btn {
+  min-width: 120px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.status-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .driver-tracking-container {
+    padding: 1rem 0;
+  }
+  
+  .driver-tracking-container .card {
+    margin-bottom: 1rem;
+  }
+  
+  .status-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .status-buttons .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .location-controls .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Loading states */
+.driver-tracking-container .spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Alert styling */
+.driver-tracking-container .alert {
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+}
+
+.driver-tracking-container .alert-success {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  color: white;
+}
+
+.driver-tracking-container .alert-danger {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  color: white;
+}
+
+/* Button hover effects */
+.driver-tracking-container .btn {
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.driver-tracking-container .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.driver-tracking-container .btn:active {
+  transform: translateY(0);
+}
+
+/* Icon styling */
+.driver-tracking-container .fas {
+  margin-right: 0.5rem;
+}
+
+/* Card hover effects */
+.driver-tracking-container .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.driver-tracking-container .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Badge styling */
+.driver-tracking-container .badge {
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Online/Offline status */
+.driver-tracking-container .btn-success {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  border: none;
+}
+
+.driver-tracking-container .btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.driver-tracking-container .btn-outline-secondary:hover {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
+/* Location sharing button */
+.driver-tracking-container .btn-primary {
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  border: none;
+}
+
+.driver-tracking-container .btn-success:not(.status-buttons .btn) {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  border: none;
+}
+
+/* Auto-update controls */
+.auto-update-controls .btn-danger {
+  background: linear-gradient(135deg, #f44336, #d32f2f);
+  border: none;
+}
+
+.auto-update-controls .btn-success {
+  background: linear-gradient(135deg, #4caf50, #45a049);
+  border: none;
+}

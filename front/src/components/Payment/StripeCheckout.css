@@ -1,0 +1,81 @@
+/* Base styles for the payment form */
+.StripeElement {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+/* Form styles */
+#payment-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Button styles */
+.pay-button {
+  margin-top: 15px;
+  height: 45px;
+  font-weight: 600;
+}
+
+/* Error message */
+.error-message {
+  color: #fa755a;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* Loading spinner */
+.spinner-border {
+  vertical-align: middle;
+}
+
+/* Modal adjustments */
+.modal-content {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+  background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  #payment-form {
+    padding: 0 15px;
+  }
+  
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+}

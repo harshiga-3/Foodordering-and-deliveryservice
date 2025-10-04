@@ -1,0 +1,192 @@
+/* Header.css */
+.navbar {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+  color: #e74c3c;
+  transform: scale(1.05);
+}
+
+.nav-link-custom {
+  color: #2c3e50 !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 0.5rem 1rem !important;
+}
+
+.nav-link-custom:hover {
+  color: #e74c3c !important;
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+}
+
+/* Search Bar Styling */
+.search-input {
+  border: 2px solid #e9ecef;
+  border-right: none;
+  border-radius: 25px 0 0 25px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+  outline: none;
+}
+
+.search-btn {
+  border-radius: 0 25px 25px 0;
+  border: 2px solid #e74c3c;
+  border-left: none;
+  padding: 0.75rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+/* Cart Button Styling */
+.cart-btn {
+  border: 2px solid #e74c3c;
+  color: #e74c3c;
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cart-btn:hover {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
+}
+
+.cart-badge {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .search-input,
+  .search-btn {
+    border-radius: 25px;
+    margin: 0.5rem 0;
+  }
+  
+  .search-input {
+    border-right: 2px solid #e9ecef;
+  }
+  
+  .search-btn {
+    border-left: 2px solid #e74c3c;
+    margin-top: 0.5rem;
+  }
+  
+  .cart-btn {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-logo {
+    font-size: 1.25rem;
+  }
+  
+  .navbar-nav {
+    text-align: center;
+  }
+  
+  .nav-link-custom {
+    padding: 0.75rem 1rem !important;
+    margin: 0.25rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+  
+  .search-input,
+  .search-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .cart-btn {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Navbar Toggle Button */
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(231, 76, 60, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Dropdown Animation */
+.navbar-collapse {
+  transition: all 0.3s ease;
+}
+
+.navbar-collapse.collapsing {
+  transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+.navbar-nav .nav-link:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Active State */
+.navbar-nav .nav-link.active {
+  color: #e74c3c !important;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}

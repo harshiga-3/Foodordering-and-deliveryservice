@@ -1,0 +1,261 @@
+/* Hero Section Styles - Maintaining Red Theme */
+.hero-section {
+  background: linear-gradient(135deg, #dc3545, #c82333) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(220, 53, 69, 0.9), rgba(200, 35, 51, 0.9));
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section h1 {
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+}
+
+.hero-section .lead {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+}
+
+/* Button Styles - Red Theme */
+
+.hero-section .btn-warning {
+  background: linear-gradient(135deg, #ffc107, #ff8f00) !important;
+  color: #dc3545 !important;
+  border: 2px solid #ffc107;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.hero-section .btn-warning:hover {
+  background: linear-gradient(135deg, #ff8f00, #ff6f00) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+/* Surprise Me Button in Hero */
+.hero-surprise-btn .surprise-me-btn {
+  background: linear-gradient(135deg, #ffc107, #ff8f00) !important;
+  color: #dc3545 !important;
+  border: 2px solid #ffc107;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-surprise-btn .surprise-me-btn:hover {
+  background: linear-gradient(135deg, #ff8f00, #ff6f00) !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
+}
+
+.hero-surprise-btn .surprise-me-btn:active {
+  transform: translateY(0);
+}
+
+.hero-surprise-btn .surprise-me-btn:disabled {
+  opacity: 0.7;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.hero-surprise-btn .surprise-me-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.hero-surprise-btn .surprise-me-btn:hover::before {
+  left: 100%;
+}
+
+/* Budget Selector in Hero */
+.hero-surprise-btn .budget-selector {
+  margin-top: 1rem;
+}
+
+.hero-surprise-btn .budget-selector small {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.hero-surprise-btn .budget-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.hero-surprise-btn .budget-option {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9) !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.hero-surprise-btn .budget-option:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  color: white !important;
+  transform: translateY(-1px);
+}
+
+.hero-surprise-btn .budget-option.active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: white !important;
+  color: #dc3545 !important;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* Image Styling */
+.hero-section img {
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  transition: transform 0.3s ease;
+}
+
+.hero-section img:hover {
+  transform: scale(1.02);
+}
+
+/* Modal Styling */
+.taste-quiz-modal .modal-content {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.taste-quiz-modal .modal-body {
+  padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section .lead {
+    font-size: 1rem;
+  }
+  
+  .hero-section .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .hero-surprise-btn .surprise-me-btn {
+    font-size: 1rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .hero-surprise-btn .budget-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-surprise-btn .budget-option {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 2rem 0 !important;
+  }
+  
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+  
+  .hero-section .d-flex {
+    justify-content: center;
+  }
+  
+  .hero-section .btn {
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Animation for buttons */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}
+
+.hero-surprise-btn .surprise-me-btn {
+  animation: pulse 2s infinite;
+}
+
+/* Loading spinner in hero */
+.hero-surprise-btn .spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+
+/* Icon styles */
+.hero-section .bi {
+  font-size: 1.1em;
+}
+
+/* Ensure text is visible on red background */
+.hero-section * {
+  color: inherit;
+}
+
+.hero-section .text-white {
+  color: white !important;
+}
+
+.hero-section .text-muted {
+  color: rgba(255, 255, 255, 0.8) !important;
+}

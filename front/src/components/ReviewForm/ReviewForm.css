@@ -1,0 +1,217 @@
+/* Review Form Styles - Red Theme */
+.review-form-container {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f8f9fa;
+}
+
+.review-form-container h5 {
+  color: #2c3e50;
+  font-weight: 700;
+  border-bottom: 2px solid #dc3545;
+  padding-bottom: 0.5rem;
+}
+
+/* Stars Container */
+.stars-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.star {
+  font-size: 2rem;
+  color: #e9ecef;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.star:hover {
+  transform: scale(1.1);
+}
+
+.star.filled {
+  color: #dc3545;
+  text-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.star:active {
+  transform: scale(0.95);
+}
+
+.rating-text {
+  font-size: 0.9rem;
+  color: #6c757d;
+  font-weight: 500;
+  min-width: 80px;
+}
+
+/* Review Textarea */
+.review-textarea {
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.review-textarea:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.review-textarea::placeholder {
+  color: #adb5bd;
+}
+
+/* Form Controls */
+.form-control:focus,
+.form-select:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Buttons */
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+}
+
+.btn-danger:disabled {
+  background: #6c757d;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-outline-secondary {
+  border: 2px solid #6c757d;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+  background: #6c757d;
+  border-color: #6c757d;
+  transform: translateY(-2px);
+}
+
+/* Form Labels */
+.form-label {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Character Count */
+.form-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Alerts */
+.alert-danger {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+}
+
+.alert-info {
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+  color: #0c5460;
+  box-shadow: 0 4px 15px rgba(13, 202, 240, 0.1);
+}
+
+.alert-info a {
+  color: #dc3545;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.alert-info a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .review-form-container {
+    padding: 1.5rem;
+  }
+  
+  .star {
+    font-size: 1.75rem;
+  }
+  
+  .btn-danger,
+  .btn-outline-secondary {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .review-form-container {
+    padding: 1rem;
+  }
+  
+  .stars-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .rating-text {
+    min-width: auto;
+  }
+  
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+  
+  .btn-danger,
+  .btn-outline-secondary {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-form-container {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Hover Effects */
+.review-form-container:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}

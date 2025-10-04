@@ -1,0 +1,239 @@
+/* Favorites Page - Red/White Theme */
+.favorites-page {
+  min-height: 100vh;
+  background: #F8FAFC; /* off-white */
+}
+
+.favorites-header {
+  background: #FFFFFF;
+  color: #1F2937;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+  border: 1px solid #E5E7EB;
+}
+
+.favorites-header h1 {
+  color: #1F2937;
+}
+
+.favorites-header h1::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 3px;
+  background: #E63946; /* primary red */
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+.favorite-card {
+  transition: all 0.3s ease;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-image {
+  transition: transform 0.3s ease;
+}
+
+.favorite-card:hover .favorite-image {
+  transform: scale(1.05);
+}
+
+.favorite-title {
+  color: #2c3e50;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.favorite-card:hover .favorite-title {
+  color: #E63946;
+}
+
+.remove-favorite-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.remove-favorite-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.empty-favorites {
+  background: white;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.empty-favorites i {
+  color: #E63946;
+  opacity: 0.5;
+}
+
+.quick-actions {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quick-actions h5 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.order-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.item-total {
+  font-weight: 600;
+  color: #e74c3c;
+}
+
+.order-totals {
+  font-size: 1.1rem;
+}
+
+.order-totals .fw-bold {
+  color: #27ae60;
+}
+
+.delivery-info {
+  background: #e8f5e8;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border-left: 4px solid #27ae60;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .favorites-header {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .favorites-header h1 {
+    font-size: 2rem;
+  }
+  
+  .quick-actions .d-flex {
+    flex-direction: column;
+    gap: 1rem !important;
+  }
+  
+  .quick-actions .d-flex .btn {
+    width: 100%;
+  }
+}
+
+/* Animation for favorite cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.favorite-card {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.favorite-card:nth-child(1) { animation-delay: 0.1s; }
+.favorite-card:nth-child(2) { animation-delay: 0.2s; }
+.favorite-card:nth-child(3) { animation-delay: 0.3s; }
+.favorite-card:nth-child(4) { animation-delay: 0.4s; }
+.favorite-card:nth-child(5) { animation-delay: 0.5s; }
+.favorite-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Loading state styles */
+.spinner-border {
+  color: #E63946;
+}
+
+/* Error state styles */
+.alert-danger {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(231, 76, 60, 0.2);
+}
+
+/* Button hover effects */
+.btn-outline-primary {
+  color: #E63946;
+  border-color: #E63946;
+}
+.btn-outline-primary:hover {
+  background: #E63946;
+  border-color: #E63946;
+  color: #FFFFFF;
+}
+
+.btn-outline-success:hover {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.btn-outline-info:hover {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+/* Card hover effects */
+.favorite-card:hover .remove-favorite-btn {
+  opacity: 1;
+}
+
+/* Badge styles */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 576px) {
+  .favorite-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .favorites-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .favorites-header h1 {
+    font-size: 1.75rem;
+  }
+}

@@ -1,0 +1,202 @@
+// src/components/Cart/Cart.jsx
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, ListGroup, Badge, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { parsePrice, calculateCartTotal, multiplyPrice } from '../../utils/priceUtils';
+import { useAuth } from '../../context/AuthContext';
+import Checkout from '../Checkout/Checkout';
+import './Cart.css';
+
+const Cart = ({ cart, onUpdateCart, onBack }) => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const [showCheckout, setShowCheckout] = useState(false);
+  const [error, setError] = useState(null);
+
+  const updateQuantity = (index, newQuantity) => {
+    if (newQuantity <= 0) {
+      removeFromCart(index);
+      return;
+    }
+    
+    const newCart = [...cart];
+    newCart[index].quantity = newQuantity;
+    onUpdateCart(newCart);
+  };
+
+  const removeFromCart = (index) => {
+    const newCart = cart.filter((_, i) => i !== index);
+    onUpdateCart(newCart);
+  };
+
+  // Calculate totals using utility functions
+  const calculateSubtotal = () => {
+    return calculateCartTotal(cart);
+  };
+
+  const calculateTax = (subtotal) => {
+    return subtotal * 0.05; // 5% tax
+  };
+
+  const calculateTotal = (subtotal, tax) => {
+    const deliveryFee = 40;
+    return subtotal + tax + deliveryFee;
+  };
+
+  const subtotal = calculateSubtotal();
+  const tax = calculateTax(subtotal);
+  const total = calculateTotal(subtotal, tax);
+
+  const handleCheckout = () => {
+    if (cart.length === 0) return;
+    
+    if (!user) {
+      alert('Please login to place an order');
+      navigate('/login');
+      return;
+    }
+
+    setShowCheckout(true);
+  };
+
+  const handleOrderSuccess = (orderId, paymentId) => {
+    // Clear cart after successful order
+    onUpdateCart([]);
+    // Navigate to order confirmation page
+    navigate(`/order-confirmation/${orderId}`);
+  };
+
+  const handleCloseCheckout = () => {
+    setShowCheckout(false);
+  };
+
+  return (
+    <Container className="py-4">
+      <Button variant="outline-danger" onClick={onBack} className="mb-4">
+        <i className="bi bi-arrow-left me-2"></i>Continue Shopping
+      </Button>
+
+      <h2 className="mb-4">Your Cart</h2>
+      
+      {error && (
+        <Alert variant="danger" dismissible onClose={() => setError(null)}>
+          <i className="bi bi-exclamation-triangle me-2"></i>
+          {error}
+        </Alert>
+      )}
+      
+      {cart.length === 0 ? (
+        <Card>
+          <Card.Body className="text-center py-5">
+            <h4 className="text-muted">Your cart is empty</h4>
+            <p>Add some delicious food items to get started!</p>
+            <Button variant="danger" onClick={onBack}>
+              Browse Restaurants
+            </Button>
+          </Card.Body>
+        </Card>
+      ) : (
+        <Row>
+          <Col lg={8}>
+            <ListGroup variant="flush">
+              {cart.map((item, index) => {
+                const itemPrice = parsePrice(item.price);
+                const itemTotal = multiplyPrice(itemPrice, item.quantity || 1);
+                
+                return (
+                  <ListGroup.Item key={index} className="py-3 px-0">
+                    <div className="d-flex align-items-center">
+                      <img 
+                        src={item.image} 
+                        alt={item.name}
+                        style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+                        className="rounded me-3"
+                      />
+                      <div className="flex-grow-1">
+                        <h6 className="mb-0">{item.name}</h6>
+                        <small className="text-muted">₹{itemPrice} each</small>
+                        <div className="mt-1">
+                          <strong>₹{itemTotal}</strong>
+                        </div>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <Button 
+                          variant="outline-secondary" 
+                          size="sm"
+                          onClick={() => updateQuantity(index, (item.quantity || 1) - 1)}
+                        >
+                          -
+                        </Button>
+                        <span className="mx-2">{item.quantity || 1}</span>
+                        <Button 
+                          variant="outline-secondary" 
+                          size="sm"
+                          onClick={() => updateQuantity(index, (item.quantity || 1) + 1)}
+                        >
+                          +
+                        </Button>
+                        <Button 
+                          variant="outline-danger" 
+                          size="sm" 
+                          className="ms-3"
+                          onClick={() => removeFromCart(index)}
+                        >
+                          <i className="bi bi-trash"></i>
+                        </Button>
+                      </div>
+                    </div>
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
+          </Col>
+          <Col lg={4}>
+            <Card>
+              <Card.Body>
+                <h5>Order Summary</h5>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Subtotal:</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Delivery Fee:</span>
+                  <span>₹40.00</span>
+                </div>
+                <div className="d-flex justify-content-between mb-2">
+                  <span>Tax (5%):</span>
+                  <span>₹{tax.toFixed(2)}</span>
+                </div>
+                <hr />
+                <div className="d-flex justify-content-between mb-3">
+                  <strong>Total:</strong>
+                  <strong>₹{total.toFixed(2)}</strong>
+                </div>
+                <Button 
+                  variant="success" 
+                  size="lg" 
+                  className="w-100"
+                  onClick={handleCheckout}
+                  disabled={cart.length === 0}
+                >
+                  Proceed to Checkout
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      )}
+
+      {/* Checkout Modal */}
+      {showCheckout && (
+        <Checkout
+          cart={cart}
+          onOrderSuccess={handleOrderSuccess}
+          onClose={handleCloseCheckout}
+          user={user}
+        />
+      )}
+    </Container>
+  );
+};
+
+export default Cart;

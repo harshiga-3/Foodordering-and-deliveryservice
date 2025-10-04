@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Food image placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8f9fa"/>
+      <stop offset="100%" stop-color="#e9ecef"/>
+    </linearGradient>
+    <linearGradient id="plate" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#e9ecef"/>
+      <stop offset="100%" stop-color="#dee2e6"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="url(#bg)"/>
+
+  <!-- Move artwork near the top so it's visible in 200px crop -->
+  <g transform="translate(400,120)">
+    <!-- Circular plate -->
+    <circle cx="0" cy="0" r="90" fill="url(#plate)" stroke="#d1d5da" stroke-width="2"/>
+    <!-- Camera icon -->
+    <g transform="translate(-32,-28)" fill="#adb5bd">
+      <rect x="0" y="10" width="64" height="44" rx="6" ry="6"/>
+      <rect x="8" y="4" width="16" height="12" rx="3" ry="3"/>
+      <circle cx="32" cy="32" r="14" fill="#9aa0a6"/>
+      <circle cx="32" cy="32" r="6" fill="#cfd4da"/>
+    </g>
+  </g>
+
+  <!-- Title near the top as well -->
+  <text x="50%" y="210" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#6c757d">
+    Image unavailable
+  </text>
+</svg>

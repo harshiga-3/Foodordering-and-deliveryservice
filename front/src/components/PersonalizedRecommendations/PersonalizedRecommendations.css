@@ -1,0 +1,335 @@
+.personalized-recommendations {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.recommendation-card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.recommendation-image {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-card:hover .recommendation-image {
+  transform: scale(1.05);
+}
+
+.recommendation-score {
+  font-size: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #28a745, #20c997) !important;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+}
+
+.recommendation-card .badge {
+  font-size: 0.7rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 15px;
+  font-weight: 600;
+}
+
+.food-meta {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+}
+
+.food-meta small {
+  font-size: 0.75rem;
+}
+
+.food-meta .text-muted {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recommendation-reason {
+  background: linear-gradient(135deg, #e3f2fd, #f8f9ff);
+  border-radius: 8px;
+  padding: 0.5rem;
+  border-left: 3px solid #2196f3;
+}
+
+.recommendation-reason small {
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+.card-title {
+  font-weight: 700;
+  color: #333;
+  line-height: 1.3;
+}
+
+.card-text {
+  line-height: 1.4;
+  color: #666;
+}
+
+.card-footer .btn {
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.card-footer .btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.card-footer .btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.card-footer .btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.card-footer .btn-outline-secondary:hover {
+  background: #6c757d;
+  border-color: #6c757d;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Section header styles */
+.personalized-recommendations h2 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.personalized-recommendations .text-muted {
+  color: #6c757d !important;
+  font-size: 1rem;
+}
+
+/* Refresh button */
+.btn-outline-primary {
+  border: 2px solid #007bff;
+  color: #007bff;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Empty state styles */
+.personalized-recommendations .card {
+  border: none;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.personalized-recommendations .card-body {
+  padding: 3rem;
+}
+
+.personalized-recommendations .btn {
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.personalized-recommendations .btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.personalized-recommendations .btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3em;
+  color: #007bff;
+}
+
+/* Alert styles */
+.alert {
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+}
+
+/* Badge styles */
+.badge {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 15px;
+  font-weight: 600;
+}
+
+.badge.small {
+  font-size: 0.65rem;
+  padding: 0.3rem 0.5rem;
+}
+
+/* Icon styles */
+.bi {
+  font-size: 1.1em;
+}
+
+.bi-heart-fill {
+  color: #dc3545 !important;
+}
+
+.bi-star-fill {
+  color: #ffc107;
+}
+
+.bi-lightbulb {
+  color: #ffc107;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .personalized-recommendations {
+    padding: 2rem 0 !important;
+  }
+  
+  .personalized-recommendations h2 {
+    font-size: 1.5rem;
+  }
+  
+  .recommendation-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .recommendation-image {
+    height: 150px;
+  }
+  
+  .food-meta {
+    padding: 0.5rem;
+  }
+  
+  .food-meta .row {
+    gap: 0.5rem;
+  }
+  
+  .card-footer .btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .personalized-recommendations .card-body {
+    padding: 2rem 1.5rem;
+  }
+  
+  .d-flex.justify-content-between {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .recommendation-image {
+    height: 120px;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+  }
+  
+  .card-text {
+    font-size: 0.85rem;
+  }
+  
+  .food-meta {
+    padding: 0.4rem;
+  }
+  
+  .food-meta small {
+    font-size: 0.7rem;
+  }
+  
+  .recommendation-reason {
+    padding: 0.4rem;
+  }
+  
+  .recommendation-reason small {
+    font-size: 0.7rem;
+  }
+}
+
+/* Animation for cards */
+.recommendation-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation for multiple cards */
+.recommendation-card:nth-child(1) { animation-delay: 0.1s; }
+.recommendation-card:nth-child(2) { animation-delay: 0.2s; }
+.recommendation-card:nth-child(3) { animation-delay: 0.3s; }
+.recommendation-card:nth-child(4) { animation-delay: 0.4s; }
+.recommendation-card:nth-child(5) { animation-delay: 0.5s; }
+.recommendation-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Custom scrollbar for recommendations if needed */
+.personalized-recommendations::-webkit-scrollbar {
+  width: 6px;
+}
+
+.personalized-recommendations::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.personalized-recommendations::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.personalized-recommendations::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

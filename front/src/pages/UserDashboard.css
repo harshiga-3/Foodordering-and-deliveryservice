@@ -1,0 +1,444 @@
+/* Theme tokens for Tamil Nadu Eats User Dashboard */
+:root {
+  --brand-red: #D32F2F;
+  --brand-gold: #FFC107;
+  --bg-neutral: #F8F9FA;
+  --text-dark: #212529;
+  --card-radius: 12px;
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* User Dashboard Styles - Red Theme */
+.user-dashboard {
+  background: var(--bg-neutral); /* Off-white */
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+/* Sidebar */
+.sidebar-card {
+  border: none;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-sm);
+  background: #1F2937; /* Charcoal sidebar */
+  position: sticky;
+  top: 2rem;
+  color: #fff;
+}
+
+.user-profile {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 16px 16px 0 0;
+}
+
+.user-profile .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 2.5rem;
+}
+
+.user-profile h5 {
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+}
+
+.user-profile p {
+  margin: 0;
+  opacity: 0.9;
+  color: #e5e7eb;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  border: none;
+}
+
+.sidebar-nav-item {
+  border: none;
+  padding: 0.85rem 1.25rem;
+  font-weight: 600;
+  color: #e5e7eb; /* light gray */
+  background: transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.sidebar-nav-item:hover {
+  background: rgba(196, 30, 58, 0.1);
+  color: #C41E3A;
+}
+
+.sidebar-nav-item.active {
+  background: rgba(211,47,47,0.15);
+  color: #ffffff;
+  border-left: 4px solid var(--brand-red);
+}
+
+.sidebar-nav-item i {
+  font-size: 1.1rem;
+  color: var(--brand-red); /* rich red icons */
+}
+
+/* Main Content */
+.main-content {
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  min-height: 600px;
+}
+
+/* Header accent */
+.main-content h2 + div { background: var(--brand-red) !important; }
+
+/* Section Headers */
+.favorites-section h4,
+.orders-section h4,
+.reviews-section h4 {
+  color: #2c3e50;
+  font-weight: 700;
+  border-bottom: 2px solid #dc3545;
+  padding-bottom: 0.5rem;
+}
+
+/* Favorite Cards */
+.favorite-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.favorite-image {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.favorite-card:hover .favorite-image {
+  transform: scale(1.05);
+}
+
+.favorite-card .card-body {
+  padding: 1.5rem;
+}
+
+.favorite-card .card-title {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.favorite-card .text-muted {
+  color: #6c757d !important;
+  line-height: 1.5;
+}
+
+/* Order Cards */
+.order-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.order-card .card-body {
+  padding: 1.5rem;
+}
+
+.order-items {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.order-items > div {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.order-items > div:last-child {
+  border-bottom: none;
+}
+
+/* Reviews Section */
+.reviews-section {
+  margin-top: 1rem;
+}
+
+/* Empty State Cards */
+.card.text-center {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card.text-center i {
+  color: #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.card.text-center h5 {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.card.text-center p {
+  color: #adb5bd;
+  margin: 0;
+}
+
+/* Buttons */
+.btn-danger {
+  background: var(--brand-red);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(196, 30, 58, 0.25);
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(196, 30, 58, 0.35);
+}
+
+.btn-outline-danger {
+  border: 2px solid #C41E3A;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+  color: #C41E3A;
+  background: transparent;
+}
+
+.btn-outline-danger:hover {
+  background: var(--brand-red);
+  border-color: var(--brand-red);
+  color: #fff;
+}
+
+/* Badges */
+.badge {
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+}
+
+.badge.bg-danger {
+  background: #C41E3A !important;
+}
+
+.badge-confirmed { background: #28a745 !important; }
+.badge-pending { background: #FFC107 !important; color: #212529 !important; }
+
+/* Recent Orders table header and zebra striping */
+.orders-table thead th {
+  background: #fde8e8;
+}
+.orders-table tbody tr:nth-child(odd) {
+  background: #fafafa;
+}
+
+/* Loading States */
+.spinner-border.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Error Alerts */
+.alert-danger {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  color: #721c24;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .sidebar-card {
+    position: static;
+    margin-bottom: 2rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-dashboard-container {
+    padding: 1rem 0;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .favorite-card .card-body {
+    padding: 1rem;
+  }
+  
+  .order-card .card-body {
+    padding: 1rem;
+  }
+  
+  .user-profile {
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .user-profile .avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .sidebar-nav-item {
+    padding: 0.75rem 1rem;
+  }
+
+  .orders-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+@media (max-width: 576px) {
+  .favorites-section h4,
+  .orders-section h4,
+  .reviews-section h4 {
+    font-size: 1.25rem;
+  }
+  
+  .btn-danger,
+  .btn-outline-danger {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Animation */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar-card {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.main-content {
+  animation: slideInRight 0.6s ease-out;
+}
+
+/* Hover Effects */
+.favorite-card:hover .card-title {
+  color: #dc3545;
+  transition: color 0.2s ease;
+}
+
+.order-card:hover h6 {
+  color: #dc3545;
+  transition: color 0.2s ease;
+}
+
+/* Custom Scrollbar */
+.user-dashboard::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-dashboard::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.user-dashboard::-webkit-scrollbar-thumb {
+  background: #dc3545;
+  border-radius: 10px;
+}
+
+.user-dashboard::-webkit-scrollbar-thumb:hover {
+  background: #c82333;
+}
+
+/* Focus States for Accessibility */
+.sidebar-nav-item:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .sidebar-card {
+    border: 2px solid #000;
+  }
+  
+  .favorite-card,
+  .order-card {
+    border: 2px solid #000;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .favorite-card,
+  .order-card,
+  .sidebar-nav-item,
+  .btn {
+    transition: none;
+  }
+  
+  .favorite-card:hover,
+  .order-card:hover {
+    transform: none;
+  }
+}
+
+/* Footer/newsletter */
+.footer-card { background: #fff; border-radius: var(--card-radius); box-shadow: var(--shadow-sm); }
+.newsletter-input { border-radius: 8px; }

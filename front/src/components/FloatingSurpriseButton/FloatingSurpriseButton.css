@@ -1,0 +1,107 @@
+/* Floating Surprise Button Styles */
+.floating-surprise-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  animation: floatIn 0.5s ease-out;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(100px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-surprise-btn {
+  position: relative;
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+  border-radius: 50px;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.floating-surprise-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255, 193, 7, 0.5);
+}
+
+.floating-surprise-btn:active {
+  transform: translateY(-1px) scale(0.95);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .floating-surprise-container {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .floating-surprise-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .floating-surprise-container {
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .floating-surprise-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .floating-surprise-btn .bi {
+    font-size: 1.2em;
+  }
+}
+
+/* Hide on very small screens if needed */
+@media (max-width: 320px) {
+  .floating-surprise-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .floating-surprise-btn .me-2 {
+    margin-right: 0.25rem !important;
+  }
+}
+
+/* Accessibility */
+.floating-surprise-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .floating-surprise-container {
+    display: none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .floating-surprise-container {
+    animation: none;
+  }
+  
+  .floating-surprise-btn {
+    transition: none;
+  }
+  
+  .floating-surprise-btn:hover {
+    transform: none;
+  }
+}

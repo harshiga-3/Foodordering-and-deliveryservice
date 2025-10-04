@@ -1,0 +1,202 @@
+/* OffersSection.css */
+.offers-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.offers-title {
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.offers-subtitle {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+.offer-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.offer-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.offer-header {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  color: white;
+}
+
+.offer-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.offer-code {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #2c3e50 !important;
+}
+
+.offer-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offer-description {
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.copy-code-btn {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%) !important;
+  border: none;
+}
+
+.copy-code-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 216, 155, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .offers-title {
+    font-size: 2rem;
+  }
+  
+  .offer-title {
+    font-size: 1.5rem;
+  }
+  
+  .offer-header {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .offers-title {
+    font-size: 1.75rem;
+  }
+  
+  .offers-subtitle {
+    font-size: 1rem;
+  }
+  
+  .offer-title {
+    font-size: 1.3rem;
+  }
+  
+  .offer-header {
+    padding: 1.25rem 0.75rem;
+  }
+  
+  .offer-code {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Animation for offer cards */
+.offer-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for multiple cards */
+.offer-card:nth-child(1) { animation-delay: 0.1s; }
+.offer-card:nth-child(2) { animation-delay: 0.2s; }
+.offer-card:nth-child(3) { animation-delay: 0.3s; }
+.offer-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover effects for copy code button */
+.copy-code-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.copy-code-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.copy-code-btn:hover::before {
+  left: 100%;
+}
+
+/* Info text styling */
+.text-muted {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.bi-info-circle {
+  color: #3498db;
+}
+
+/* Card body padding adjustments */
+.offer-card .card-body {
+  padding: 1.5rem;
+}
+
+/* Offer header responsive adjustments */
+@media (max-width: 768px) {
+  .offer-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .offer-badge {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+/* Hover state improvements */
+.offer-card:hover .offer-header {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Shadow improvements on hover */
+.offer-card:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
